@@ -1,2 +1,10 @@
 language: node_js
 node_js: node
+deploy:
+  provider: heroku
+  api_key:
+    secure: m8uGlFS12ykerTrbHq3yqUiwRV4QfaG8juMh5VevuUZilPjhlYiRxa+Jco5eMyp2Y+aEMR+/K8OZBhqpKgZi17fSWWbRu4icN6sT6f//uhycJPyyecagnDCudDeRjUFh1Cuywepfwi9JXdXtzmiLyEYbmr0Sp8tZpFEf0DQboz6B/ST7kOauhub9e8hbaQCrLfk8xKfV+j2BaGLohk1feQMsQ69YupXcqMSymnWppoPfw0ac2P9lhnyPO19Zds9c0VQDFMYi9ydLx2iX0UG454LX/NQ2LVO7M/8K6IeKi/FVwCaPrX8NxqFrNKm6Tm1XNcn2J9IRBH/h6mC18DNCnCsRbJmSUjsqyJBug1jNOoKY126tnycUKO/nO795VcvxAZmsDLoTaFSReOHqeTkarhcMA+poUKrIiTHdH61Ap1ZbKsKW9z8lwXmTOcJpvleNfDGz+33go/0u6bZFZeF/DCIB9UJ44a+z4YvEGNJRNxO/MPXCbQrJTgyI14vSUL1kI3oYwwcWUQkjbGvgvbEk1ZguUE4cXrCW9Z3w/DwdxUFpeFD3q9v5fDHS9+oxoUz4F/lPMjqSYMrg1TIMouTNjtmkid+VHe0eAFeMEl7o9AaiGdNTohUZJYf+2gFY5GP/kmkNxSltocxjLG4c02uZhaJ3eJ9/aWB8zogfkohcEBI=
+  app: frozen-shelf-10907
+  on:
+    repo: Hartecode/blog-api
+    branch: testing
