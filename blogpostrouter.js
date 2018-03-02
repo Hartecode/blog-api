@@ -91,12 +91,16 @@ router.post('/', (req, res) => {
 // 	res.status(204).end();
 // });
 
-// router.delete('/:id', (req, res) => {
-// 	console.log(req.params.id);
-// 	BlogPosts.delete(req.params.id);
-// 	console.log(`You have deleted post id:${req.params.id}`);
-// 	res.status(204).end();
-// });
+router.delete('/:id', (req, res) => {
+	console.log(req.params.id);
+	BlogPosts
+		.findByIdAndRemove(req.params.id)
+    	.then(() => {
+    		console.log(`You have deleted post id:${req.params.id}`);
+    		res.status(204).end();
+    	})
+    	.catch(err => res.status(500).json({ message: 'Internal server error' }));
+});
 
 
 module.exports = router;
