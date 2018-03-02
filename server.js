@@ -5,13 +5,18 @@ const mongoose = require('mongoose');
 const app = express();
 
 const blogRouter = require('./blogpostrouter');
-
+const { PORT, DATABASE_URL } = require('./config');
 app.use(morgan('common'));
 
 mongoose.Promise = global.Promise;
 
 
-app.use('/blog-posts', blogRouter);
+app.use('/posts', blogRouter);
+
+// closeServer needs access to a server object, but that only
+// gets created when `runServer` runs, so we declare `server` here
+// and then assign a value to it in run
+let server;
 
 function runServer(databaseUrl, port = PORT) {
 
@@ -45,6 +50,10 @@ function closeServer() {
     });
   });
 }
+
+app.use('*', function (req, res) {
+  res.status(404).json({ message: 'Not Found' });
+});
 
 if (require.main === module) {
   runServer(DATABASE_URL).catch(err => console.error(err));
