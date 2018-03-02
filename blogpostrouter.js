@@ -34,6 +34,7 @@ router.post('/', jsonParser, (req, res) => {
 	res.status(201).json(item);
 });
 
+
 router.put('/:id', jsonParser, (req, res) => {
 	const requiredfeild = ['title','content', 'author', 'id'];
 	for(let i = 0; i < requiredfeild.lenght; i++){
