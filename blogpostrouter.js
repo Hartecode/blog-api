@@ -35,22 +35,31 @@ router.get('/:id', (req, res) => {
     });
 });
 
-// router.post('/', jsonParser, (req, res) => {
-// 	const requiredfeild = ['title','content', 'author'];
-// 	//check if the right keys are in the request
-// 	console.log(res.body);
-// 	for(let i = 0; i < requiredfeild.lenght; i++){
-// 		const feild = requiredfeild[i];
-// 		if(!(feild in req.body)){
-// 			const message = `Missing \`${feild}\` in request body`;
-// 			console.error(message);
-// 			return res.status(400).send(message);
-// 		}
-// 	}
+router.post('/', (req, res) => {
+	const requiredfeild = ['title','content', 'author'];
+	//check if the right keys are in the request
+	console.log(res.body);
+	for(let i = 0; i < requiredfeild.lenght; i++){
+		const feild = requiredfeild[i];
+		if(!(feild in req.body)){
+			const message = `Missing \`${feild}\` in request body`;
+			console.error(message);
+			return res.status(400).send(message);
+		}
+	}
 
-// 	const item = BlogPosts.create(req.body.title, req.body.content, req.body.author);
-// 	res.status(201).json(item);
-// });
+	BlogPosts
+	    .create({
+	      title: req.body.title,
+	      content: req.body.content,
+	      author: req.body.author,
+	    })
+	    .then(post => res.status(201).json(post.serialize()))
+	    .catch(err => {
+	      console.error(err);
+	      res.status(500).json({ message: 'Internal server error' });
+    });
+});
 
 
 // router.put('/:id', jsonParser, (req, res) => {
