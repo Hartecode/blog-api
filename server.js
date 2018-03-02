@@ -8,6 +8,7 @@ const blogRouter = require('./blogpostrouter');
 
 app.use(morgan('common'));
 
+
 app.use('/blog-posts', blogRouter);
 
 app.listen(process.env.PORT || 8080, () => {
